@@ -1,4 +1,4 @@
-const crypto  = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
     {
         const { name, email, whatsapp, city, uf } = request.body; //Enviados no corpo do Insomnia. String em formato json no body do Insomnia
 
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         await connection('ongs').insert({
             id,
